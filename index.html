@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+        <link rel="stylesheet" href="css/index.css">
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+
+
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="item_header">
+                    <div class="item_detail">商品</div>
+                    <div class="price">單價</div>
+                    <div class="count">數量</div> 
+                    <div class="amount">總計</div>
+                   
+                </div>
+                <div class="item_container" v-for="(item, index) in itemList">
+                    <div class="item_header item_body">
+                        <div class="item_detail">
+                            <img v-bind:src="item.imgUrl" alt="">
+                            <div class="name">{{item.itemName}}</div>
+                        </div>
+                        
+                        <div class="price"><span>$</span>{{item.price}}</div>
+                        <div class="count">
+                            <button @click="handleSub(item)">-</button>
+                            {{item.count}}
+                            <button @click="handlePlus(item)">+</button>
+                        </div> 
+                        <div class="amount">{{item.price * item.count}}</div>
+                       
+                
+                    </div>
+                </div>
+
+                <div class = "total_box">
+                    <span>總計：${{totalPrice}}</span>
+                </div>
+                <div class = "total_box">
+                    <button @click="buy">送出</button>
+                </div>
+            </div>
+        </div>
+    </body>
+
+
+
+
+</html>
