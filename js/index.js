@@ -41,7 +41,7 @@ const app ={
           },
           handleSub: function(item){
             console.log(item);
-            if(item.count>1){
+            if(item.count>0){
               item.count--;
             }
          },
