@@ -87,13 +87,13 @@ const app ={
                 itemListJson = JSON.stringify(resultItemList)
                 console.log(  itemListJson)
                 send_data_to_google(itemListJson)
-                
+                this.reset()
             }
             else{
                 alert("尚未選取任何商品")
             }
          },
-         reset:function(){
+         reset: function(){
             for(let i=0; i<this.itemList.length ;i++){
                 this.itemList[i].count = 0
             }
