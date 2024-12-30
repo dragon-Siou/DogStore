@@ -2,6 +2,7 @@ body{
     background-color: rgba(0, 0, 0,.2);
 }
 .item_header{
+    padding-top: 25px;
     display: flex;
     width: 1000px;
     margin: 0 auto;
@@ -20,24 +21,26 @@ body{
     width: 50%;
 }
 .item_body{
-    margin-top: 20px;
+    margin-top: 25px;
+
     height: 150px;
     align-items: center;    
 }
-
+/*
 .item_detail img{
     width: 120px;
     height: 120px;
     border-radius: 3px;
     
     float: left;
-}
+}*/
 
 
 
 .item_detail .name{
+
     margin-left: 150px;
-    margin-top: 45px;
+    margin-top: 60px;
 } 
 
 .total_box{
@@ -51,17 +54,44 @@ body{
 }
 
 .item_detail_image_box{
-    width: 100px;
-    height: 100px;
+  float: left;
+  margin: 0 auto;
+
+  height: 150px;
+
+  position: relative;
 }
-/*
+
 .item_detail_image{
-    max-height:100%;
-   
-    width:  auto;
+   position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
 }
-*/
+
 
 .content_font{
     font-size: 30px;
+}
+
+.count_box{
+
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+.count_btn{
+    margin: 25px;
+}
+
+.remark_box{
+    margin-top: 50px;
 }
