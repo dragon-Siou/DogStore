@@ -97,6 +97,8 @@ const app ={
             for(let i=0; i<this.itemList.length ;i++){
                 this.itemList[i].count = 0
             }
+            this.remark=""
+
          }
         
     },
