@@ -1,52 +1,68 @@
+
+
 const app ={
     el:'#app',
     data(){
     return {
-            itemList:[
+            itemList:
+            [
                 {
-                id:'1',
+            
+                itemName:'載入中',
+                imgUrl:"",
+                price:0,
+                count:0
+                }
+            ],
+                /*[
+                {
+            
                 itemName:'巧克滋味1',
                 imgUrl:"images/貓狗.jpg",
                 price:250,
                 count:0
                 },
                 {
-                id:'2',
+        
                 itemName:'巧克滋味2',
                 imgUrl:"images/貓狗.jpg",
                 price:200,
                 count:0
                 },
                 {
-                id:'3',
+            
                 itemName:'小道消息',
                 imgUrl:"images/貓狗.jpg",
                 price:200,
                 count:0
                 },
                 {
-                id:'4',
+        
                 itemName:'旅行袋',
                 imgUrl:"images/貓狗.jpg",
                 price:850,
                 count:0
                 },
-            ],
+            ]*/
             remark:""
         }
     },
+    mounted(){
+        window.app = this
+    },
     methods:{
+
         handlePlus: function(item){
             //console.log(item);
             item.count++;
-          },
-          handleSub: function(item){
-            //console.log(item);
+        },
+        handleSub: function(item){
+        //console.log(item);
             if(item.count>0){
-              item.count--;
+                item.count--;
             }
-         },
-         buy: function(){
+        },
+        buy: function(){
 
             let resultItemList = []
             for(item of this.itemList){
@@ -64,7 +80,7 @@ const app ={
                     resultItemList.push(data)
                     
                 }
-                  
+                    
             }
 
             //如果都沒有資料，但有備註，單純送備註就好
@@ -86,26 +102,37 @@ const app ={
 
                 itemListJson = JSON.stringify(resultItemList)
                 console.log(  itemListJson)
-                send_data_to_google(itemListJson)
+                sendDataToGoogle(itemListJson)
                 this.reset()
             }
             else{
                 alert("尚未選取任何商品")
             }
-         },
-         reset: function(){
+            },
+        reset: function(){
+            console.log(this.itemList)
             for(let i=0; i<this.itemList.length ;i++){
                 this.itemList[i].count = 0
             }
             this.remark=""
 
-         }
+        },
+        
+        updateItemList : function(dataList){
+            
+            console.log(this.itemList)
+
+            for(let i = 0; i<dataList.length ;i++){
+                this.itemList.splice(i, 1, dataList[i])
+            }
+        }
+        
         
     },
     computed:{
         totalPrice: function(){
             let total = 0
-           
+            
             
             for(item of this.itemList){
                 /*console.log(item )
@@ -114,12 +141,15 @@ const app ={
                 
             }
             return total
-         }
+            }
     }
 }
 
+    
 
-function send_data_to_google(itemListJson){
+
+
+function sendDataToGoogle(itemListJson){
     $.ajax({
         url: "https://script.google.com/macros/s/AKfycbyHtFR1cmk4WwMkN9WvlhPg6a2bAYuJfU5s3Ukii_Dot9swo_M3sz4Oe0eV_suXaU2Ehg/exec",
         dataType: "json",
@@ -168,5 +198,34 @@ function send_data_to_google(itemListJson){
 
 $(function(){
     Vue.createApp(app).mount('#app')
+
+    $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbyVYZrwTarF4G6rLtoZNUEYYsK5uCWHnMlxsbWgTKfBSEefTHlaSRlt68cmRPv9EPtKRQ/exec",
+        dataType: "json",
+        type:"post",
+       
+        success: function(dataList) {
+           
+            console.log(dataList);
+
+            //加上count屬性 圖片連結
+            for(let i =0; i<dataList.length ;i++){
+                dataList[i].count = 0
+                //圖片URL
+                dataList[i].imgUrl = "images/" + dataList[i].itemName + ".jpg"
+            }
+
+            //console.log(app.methods.updateItemList)
+            window.app.updateItemList(dataList)
+            
+         
+        },
+        error: function(err){
+            
+            console.log(err.status + " " + err.statusText)
+        }
+    });
+
+
 })
 
