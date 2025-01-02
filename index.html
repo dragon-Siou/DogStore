@@ -2,53 +2,88 @@
 <html>
     <head>
         <script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
-        <link rel="stylesheet" href="css/index.css">
+        
         <script type="text/javascript" src="js/index.js"></script>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="css/index.css">
         <meta charset="UTF-8" />
     </head>
 
 
     <body>
+        <!--
+        <nav class="navbar navbar-dark bg-dark" style="background-color: #e3f2fd;">
+            <div class="container-fluid">
+                <a class="content_font navbar-brand">天犬的蘋果派工坊</a>
+
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      <a class="navbar-brand" href="#">商店</a>
+                      <a class="nav-link" href="#">銷售紀錄</a>
+                    </div>
+                  </div>
+            </div>
+        </nav>-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <span class="navbar-brand content_font" href="#">天犬的蘋果派工坊</span>
+            <!--
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>-->
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active title-font" href="index.html">商店</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link title-font" href="#">數量統計</a>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </nav>
         <div id="app">
             <div class="container">
-                <div class="item_header">
-                    <div class="item_detail"><span class="content_font">商品</span></div>
-                    <div class="price"><span class="content_font">單價</span></div>
-                    <div class="count"><span class="content_font">數量</span></div> 
-                    <div class="amount"><span class="content_font">總計</span></div>
+                <div class="row">
+                    <div class="col-3 col-box"></div>
+                    <div class="col-3 col-box"><span class="content_font">商品</span></div>
+                    <div class="col col-box"><span class="content_font">單價</span></div>
+                    <div class="col col-box"><span class="content_font">數量</span></div> 
+                    <div class="col col-box"><span class="content_font">總計</span></div>
                    
                 </div>
-                <div class="item_container" v-for="(item, index) in itemList">
-                    <div class="item_header item_body">
-                        <div class="item_detail">
-                            <div class = "item_detail_image_box">
-                                <img class="item_detail_image" v-bind:src="item.imgUrl" alt="">
-                            </div>
-                            <div class="name"><span class="content_font">{{item.itemName}}</span></div>
+                <div class="row row-box" v-for="(item, index) in itemList">
+        
+                    <div class="col-3 col-box">
+                        <div class = "item_detail_image_box">
+                            <img class="item_detail_image" v-bind:src="item.imgUrl" alt="">
                         </div>
                         
-                        <div class="price"><span class="content_font">$</span><span class="content_font">{{item.price}}</span></div>
-                        <div class="count">
-             
-                            <button class="btn btn-light" @click="handleSub(item)">
-                                <span class="content_font">-</span> 
-                            </button>
-                            <div class="count_box">
-                                <span class="content_font">{{item.count}}</span>
-                            </div>
-                           
-
-                            <button class="btn btn-light" @click="handlePlus(item)">
-                                <span class="content_font">+</span>
-                            </button>
-                        </div> 
-                        <div class="amount"><span class="content_font">{{item.price * item.count}}</span></div>
-                       
-                
                     </div>
+                    <div class="col-3 col-box"><span class="content_font">{{item.itemName}}</span></div>
+                    <div class="col col-box"><span class="content_font">$</span><span class="content_font">{{item.price}}</span></div>
+                    <div class="col col-box">
+            
+                        <button class="btn btn-light" @click="handleSub(item)">
+                            <span class="content_font">-</span> 
+                        </button>
+                        <div class="count_box">
+                            <span class="content_font">{{item.count}}</span>
+                        </div>
+                        
+
+                        <button class="btn btn-light" @click="handlePlus(item)">
+                            <span class="content_font">+</span>
+                        </button>
+                    </div> 
+                    <div class="col col-box"><span class="content_font">{{item.price * item.count}}</span></div>
+                    
+            
+                
                 </div>
 
                 <div class="input-group input-group-lg remark_box">

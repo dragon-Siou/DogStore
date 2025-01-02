@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+    <head>
+        <script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+        <link rel="stylesheet" href="css/index.css">
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <meta charset="UTF-8" />
+    </head>
+
+
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="item_header">
+                    <div class="item_detail"><span class="content_font">商品</span></div>
+                    <div class="price"><span class="content_font">單價</span></div>
+                    <div class="count"><span class="content_font">數量</span></div> 
+                    <div class="amount"><span class="content_font">總計</span></div>
+                   
+                </div>
+                <div class="item_container" v-for="(item, index) in itemList">
+                    <div class="item_header item_body">
+                        <div class="item_detail">
+                            <div class = "item_detail_image_box">
+                                <img class="item_detail_image" v-bind:src="item.imgUrl" alt="">
+                            </div>
+                            <div class="name"><span class="content_font">{{item.itemName}}</span></div>
+                        </div>
+                        
+                        <div class="price"><span class="content_font">$</span><span class="content_font">{{item.price}}</span></div>
+                        <div class="count">
+             
+                            <button class="btn btn-light" @click="handleSub(item)">
+                                <span class="content_font">-</span> 
+                            </button>
+                            <div class="count_box">
+                                <span class="content_font">{{item.count}}</span>
+                            </div>
+                           
+
+                            <button class="btn btn-light" @click="handlePlus(item)">
+                                <span class="content_font">+</span>
+                            </button>
+                        </div> 
+                        <div class="amount"><span class="content_font">{{item.price * item.count}}</span></div>
+                       
+                
+                    </div>
+                </div>
+
+                <div class="input-group input-group-lg remark_box">
+                    <span class="input-group-text" id="inputGroup-sizing-lg">備註</span>
+                    <input type="text" v-model="remark" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                </div>
+                  
+                <div class = "total_box">
+                    <span class="content_font">總計：${{totalPrice}}</span>
+                </div>
+
+                <div class = "total_box">
+                    <button type="button" class="btn btn-light count_btn" @click="reset"><span class="content_font">清空</span></button>
+                    <button type="button" class="btn btn-light count_btn" @click="buy"><span class="content_font">送出</span></button>
+                </div>
+            </div>
+        </div>
+    </body>
+
+
+
+
+</html>
