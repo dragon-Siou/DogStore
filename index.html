@@ -2,10 +2,11 @@
 <html>
     <head>
         <script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
-        
+
         <script type="text/javascript" src="js/index.js"></script>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="css/index.css">
         <meta charset="UTF-8" />
@@ -29,23 +30,26 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
               <span class="navbar-brand content_font" href="#">天犬的蘋果派工坊</span>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
             <!--
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>-->
-              <div class="collapse navbar-collapse" id="navbarNav">
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active title-font" href="index.html">商店</a>
+                    <a class="nav-link active title-font" aria-current="page"  href="index.html">商店</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link title-font" href="#">數量統計</a>
+                    <a class="nav-link title-font" href="sales_count.html">數量統計</a>
                   </li>
                   
                 </ul>
               </div>
             </div>
-          </nav>
+        </nav>
         <div id="app">
             <div class="container">
                 <div class="row">
@@ -90,14 +94,37 @@
                     <span class="input-group-text" id="inputGroup-sizing-lg">備註</span>
                     <input type="text" v-model="remark" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                 </div>
-                  
-                <div class = "total_box">
+
+                <div class = "row row-box">
+                  <div class = "col-6">
+                    
+                  </div>
+                  <div class = "col col-box">
                     <span class="content_font">總計：${{totalPrice}}</span>
+                  </div>
+                  <div class = "col col-box">
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-text" id="inputGroup-sizing-lg">現金</span>
+                      <input type="text" class="form-control content_font" v-model="cash" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                    </div>
+                  </div>
+                  <div class = "col col-box">
+                      <span class="content_font">找零：${{giveChange}}</span>
+                  </div>
                 </div>
 
-                <div class = "total_box">
+                <div class = "row row-box">
+                  <div class = "col-8 col-box">
+                    
+                  </div>
+                  <div class = "col col-box">
                     <button type="button" class="btn btn-light count_btn" @click="reset"><span class="content_font">清空</span></button>
+                  </div>
+                  <div class = "col col-box">
                     <button type="button" class="btn btn-light count_btn" @click="buy"><span class="content_font">送出</span></button>
+                  </div>
+                    
+                    
                 </div>
             </div>
         </div>

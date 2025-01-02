@@ -44,7 +44,8 @@ const app ={
                 count:0
                 },
             ]*/
-            remark:""
+            remark:"",
+            cash : ""
         }
     },
     mounted(){
@@ -115,6 +116,7 @@ const app ={
                 this.itemList[i].count = 0
             }
             this.remark=""
+            this.cash = ""
 
         },
         
@@ -141,7 +143,11 @@ const app ={
                 
             }
             return total
-            }
+            },
+        giveChange: function(){
+            let change = this.cash - this.totalPrice 
+            return change
+        }
     }
 }
 
