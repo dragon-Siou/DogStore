@@ -150,6 +150,7 @@ const app ={
 
 
 function sendDataToGoogle(itemListJson){
+    
     $.ajax({
         url: "https://script.google.com/macros/s/AKfycbyHtFR1cmk4WwMkN9WvlhPg6a2bAYuJfU5s3Ukii_Dot9swo_M3sz4Oe0eV_suXaU2Ehg/exec",
         dataType: "json",
@@ -198,9 +199,28 @@ function sendDataToGoogle(itemListJson){
 
 $(function(){
     Vue.createApp(app).mount('#app')
-
+    //目前商品數量統計
     $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbyVYZrwTarF4G6rLtoZNUEYYsK5uCWHnMlxsbWgTKfBSEefTHlaSRlt68cmRPv9EPtKRQ/exec",
+        url: "https://script.google.com/macros/s/AKfycbyVp9-4JXpViGEFqaP3UcARK6-e2hhOs9qBCTFOvgz-jJm6SJFfpOQiC_OcqkHKyrCVGA/exec",
+        dataType: "json",
+        type:"post",
+       
+        success: function(data) {
+           
+            console.log(data);
+
+           
+         
+        },
+        error: function(err){
+            
+            console.log(err.status + " " + err.statusText)
+        }
+    });
+   
+    //商品訊息
+    $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbyzdVL3A4cuLyfns1245eAV-PH4-nIvOAHJFqxsics9lAlH3P_FEva0fMbHVL206APQcg/exec",
         dataType: "json",
         type:"post",
        
@@ -212,7 +232,7 @@ $(function(){
             for(let i =0; i<dataList.length ;i++){
                 dataList[i].count = 0
                 //圖片URL
-                dataList[i].imgUrl = "images/" + dataList[i].itemName + ".jpg"
+                //dataList[i].imgUrl = "images/" + dataList[i].itemName + ".jpg"
             }
 
             //console.log(app.methods.updateItemList)
