@@ -40,16 +40,65 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active title-font" aria-current="page"  href="index.html">商店</a>
+                    <a class="nav-link title-font" aria-current="page"  href="index.html">商店</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link title-font" href="sales_count.html">數量統計</a>
+                    <a class="nav-link active title-font" href="sales_count.html">數量統計</a>
                   </li>
                   
                 </ul>
               </div>
             </div>
         </nav>
+
+        <div id="app">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3 col-box"></div>
+                    <div class="col-3 col-box"><span class="content_font">商品</span></div>
+                    <div class="col col-box"><span class="content_font">單價</span></div>
+                    <div class="col col-box"><span class="content_font">銷售量</span></div> 
+                    <div class="col col-box"><span class="content_font">銷售總額</span></div>
+                   
+                </div>
+                <div class="row row-box" v-for="(item, index) in itemList">
+        
+                    <div class="col-3 col-box">
+                        <div class = "item_detail_image_box">
+                            <img class="item_detail_image" v-bind:src="item.imgUrl" alt="">
+                        </div>
+                        
+                    </div>
+                    <div class="col-3 col-box"><span class="content_font">{{item.itemName}}</span></div>
+                    <div class="col col-box"><span class="content_font">$</span><span class="content_font">{{item.price}}</span></div>
+                    <div class="col col-box">
+            
+                       
+                        <div class="count_box">
+                            <span class="content_font">{{item.count}}</span>
+                        </div>
+                        
+
+                    </div> 
+                    <div class="col col-box"><span class="content_font">{{item.totalPrice}}</span></div>
+                    
+                
+                </div>
+
+
+                <div class = "row row-box">
+                  <div class = "col-10">
+                    
+                  </div>
+                  <div class = "col col-box">
+                    <span class="content_font">總計：${{totalPrice}}</span>
+                  </div>
+                  
+                </div>
+              
+            </div>
+        </div>
+
        
 
 

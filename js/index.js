@@ -205,24 +205,7 @@ function sendDataToGoogle(itemListJson){
 
 $(function(){
     Vue.createApp(app).mount('#app')
-    //目前商品數量統計
-    $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbyVp9-4JXpViGEFqaP3UcARK6-e2hhOs9qBCTFOvgz-jJm6SJFfpOQiC_OcqkHKyrCVGA/exec",
-        dataType: "json",
-        type:"post",
-       
-        success: function(data) {
-           
-            console.log(data);
 
-           
-         
-        },
-        error: function(err){
-            
-            console.log(err.status + " " + err.statusText)
-        }
-    });
    
     //商品訊息
     $.ajax({
