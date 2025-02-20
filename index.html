@@ -100,7 +100,7 @@
                     <span class="input-group-text" id="inputGroup-sizing-lg">備註</span>
                     <input type="text" v-model="remark" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                 </div>
-
+                <!--
                 <div class = "row row-box">
                   <div class = "col-3">
                     
@@ -117,13 +117,35 @@
                   <div class = "col col-box">
                       <span class="content_font">找零：${{giveChange}}</span>
                   </div>
+                </div>-->
+                <div class = "row row-box">
+                 
+                  <div class = "col col-box">
+                    <span class="content_font">總計：${{totalPrice}}</span>
+                  </div>
+                 
                 </div>
+                <div class = "row row-box">
+                  
+                  
+                  <div class = "col-5 col-box">
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-text" id="inputGroup-sizing-lg">現金</span>
+                      <input type="text" class="form-control content_font" v-model="cash" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class = "row row-box">
+                  
+                  <div class = "col col-box">
+                      <span class="content_font">找零：${{giveChange}}</span>
+                  </div>
+                </div>
+                
 
                 <div class = "row row-box">
-                  <div class = "col-3 col-box">
-
-                    
-                  </div>
+    
                   <div class = "col col-box">
                     <button type="button" class="btn btn-light count_btn" @click="reset"><span class="content_font">清空</span></button>
                   </div>
