@@ -148,6 +148,21 @@ const app ={
         giveChange: function(){
             let change = this.cash - this.totalPrice 
             return change
+        },
+        details: function(){
+
+            result = "明細<br>"
+
+            for(let i=0; i<this.itemList.length ;i++){
+                if(this.itemList[i].count != 0){
+                    result += this.itemList[i].itemName + ": " + this.itemList[i].count + "<br>"
+
+                   
+                }
+                
+            }
+
+            return result
         }
     }
 }

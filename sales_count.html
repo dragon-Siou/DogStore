@@ -62,15 +62,24 @@
                     <div class="col col-box"><span class="content_font">銷售總額</span></div>
                    
                 </div>
-                <div class="row row-box" v-for="(item, index) in itemList">
+                <div>
+
+                <div v-for="(item, index) in itemList">
+                  <div class="row row-box" >
         
-                    <div class="col-3 col-box">
+                    <div class="col col-box">
                         <div class = "item_detail_image_box">
                             <img class="item_detail_image" v-bind:src="item.imgUrl" alt="">
                         </div>
                         
                     </div>
-                    <div class="col-3 col-box"><span class="content_font">{{item.itemName}}</span></div>
+                    <div class="col col-box"><span class="content_font">{{item.itemName}}</span></div>
+                 
+                    
+                  </div>
+
+                  <div class="row row-box" >
+                    <div class="col-3 col-box"></div>
                     <div class="col col-box"><span class="content_font">$</span><span class="content_font">{{item.price}}</span></div>
                     <div class="col col-box">
             
@@ -83,9 +92,9 @@
                     </div> 
                     <div class="col col-box"><span class="content_font">{{item.totalPrice}}</span></div>
                     
-                
+                  </div>
                 </div>
-
+                
 
                 <div class = "row row-box">
                   <div class = "col-10">
