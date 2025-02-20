@@ -10,7 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="css/index.css">
         <meta charset="UTF-8" />
-        <meta name="viewport" content='"width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no"'>
+        <meta name="viewport" content='"width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"'>
     </head>
 
 
@@ -61,15 +61,22 @@
                     <div class="col col-box"><span class="content_font">總計</span></div>
                    
                 </div>
-                <div class="row row-box" v-for="(item, index) in itemList">
-        
-                    <div class="col-3 col-box">
-                        <div class = "item_detail_image_box">
-                            <img class="item_detail_image" v-bind:src="item.imgUrl" alt="">
-                        </div>
-                        
-                    </div>
-                    <div class="col-3 col-box"><span class="content_font">{{item.itemName}}</span></div>
+                <div v-for="(item, index) in itemList">
+                  <div class="row row-box" >
+          
+                      <div class="col-3 col-box">
+                          <div class = "item_detail_image_box">
+                              <img class="item_detail_image" v-bind:src="item.imgUrl" alt="">
+                          </div>
+                          
+                      </div>
+                      <div class="col-3 col-box"><span class="content_font">{{item.itemName}}</span></div>
+                     
+                      
+              
+                  
+                  </div>
+                  <div class="row row-box" >
                     <div class="col col-box"><span class="content_font">$</span><span class="content_font">{{item.price}}</span></div>
                     <div class="col col-box">
             
@@ -86,9 +93,7 @@
                         </button>
                     </div> 
                     <div class="col col-box"><span class="content_font">{{item.price * item.count}}</span></div>
-                    
-            
-                
+                  </div>
                 </div>
 
                 <div class="input-group input-group-lg remark_box">
@@ -116,9 +121,7 @@
 
                 <div class = "row row-box">
                   <div class = "col-3 col-box">
-                    
-                  </div>
-                  <div class = "col col-box">
+
                     
                   </div>
                   <div class = "col col-box">
