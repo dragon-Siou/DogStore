@@ -74,7 +74,7 @@ const app ={
                         item.itemName,
                         item.price,
                         item.count,
-                        item.price* item.count,
+                        item.price * item.count,
                         this.remark
                     ]
 
@@ -174,7 +174,8 @@ const app ={
 function sendDataToGoogle(itemListJson){
     
     $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbyHtFR1cmk4WwMkN9WvlhPg6a2bAYuJfU5s3Ukii_Dot9swo_M3sz4Oe0eV_suXaU2Ehg/exec",
+        //url: "https://script.google.com/macros/s/AKfycbyHtFR1cmk4WwMkN9WvlhPg6a2bAYuJfU5s3Ukii_Dot9swo_M3sz4Oe0eV_suXaU2Ehg/exec",
+        url: "https://script.google.com/macros/s/AKfycbxezvbAyB0KbhIE9b50WNtzR973lyd34AVeOBLxR-zYBqnYJxOIJi5gKJC7mCzwxFF0_Q/exec",
         dataType: "json",
         type:"post",
         data: {
