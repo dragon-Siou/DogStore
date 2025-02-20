@@ -122,11 +122,12 @@ const app ={
         
         updateItemList : function(dataList){
             
-            console.log(this.itemList)
+            //console.log(this.itemList)
 
             for(let i = 0; i<dataList.length ;i++){
                 this.itemList.splice(i, 1, dataList[i])
             }
+            console.log(this.itemList)
         }
         
         
