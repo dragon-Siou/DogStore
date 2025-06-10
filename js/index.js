@@ -149,6 +149,9 @@ const app ={
             let change = this.cash - this.totalPrice 
             return change
         },
+        change: function(){
+            return this.cash - this.totalPrice 
+        },
         details: function(){
 
             result = "明細<br>"
@@ -163,7 +166,39 @@ const app ={
             }
 
             return result
+        },
+
+        groupItemList: function(){
+            
+            count = 0
+
+            result = []
+
+            row = []
+
+            rowCount = 3
+
+            for(let i = 0; i<this.itemList.length ;i++){
+
+
+                row.push(this.itemList[i])
+
+                //最後一個
+                if(i % rowCount == rowCount-1 || i == this.itemList.length-1){
+                    result.push(row)
+                    row = []
+                }
+
+                count++
+            }
+
+            console.log(result)
+            return result
         }
+
+
+
+
     }
 }
 

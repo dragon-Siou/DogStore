@@ -5,8 +5,9 @@
 
         <script type="text/javascript" src="js/index.js"></script>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="css/index.css">
         <meta charset="UTF-8" />
@@ -52,7 +53,44 @@
             </div>
         </nav>
         <div id="app">
-            <div class="container">
+            <div class="container container-box">
+
+              
+              <div  v-for="(row, index) in groupItemList">
+                <div class="row">
+             
+                  
+                  <div class="col-4 col-box" v-for="(item, index) in row">
+                      <div class="card " style="width: 18rem;">
+                        <div class = "item_detail_image_box">
+                              <img class="item_detail_image" v-bind:src="item.imgUrl" alt="">
+                          </div>
+                        <!--<img v-bind:src="item.imgUrl" class=" card-img-top" alt="...">-->
+                        <div class="card-body">
+                          
+                          <p class="card-text">{{item.itemName}}</p>
+                           <div class="col col-box"><span class="content_font">$</span><span class="content_font">{{item.price}}</span></div>
+                           <button class="btn btn-light" @click="handleSub(item)">
+                            <span class="content_font">-</span> 
+                          </button>
+                          <div class="count_box">
+                              <span class="content_font">{{item.count}}</span>
+                          </div>
+                          
+
+                          <button class="btn btn-light" @click="handlePlus(item)">
+                              <span class="content_font">+</span>
+                          </button>
+                        </div>
+                      </div>
+                  </div>
+                  
+                </div>
+              </div>
+              
+             
+
+              <!--舊的 
                 <div class="row">
                     <div class="col-3 col-box"></div>
                     <div class="col-3 col-box"><span class="content_font">商品</span></div>
@@ -101,24 +139,7 @@
                     <span class="input-group-text" id="inputGroup-sizing-lg">備註</span>
                     <input type="text" v-model="remark" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                 </div>
-                <!--
-                <div class = "row row-box">
-                  <div class = "col-3">
-                    
-                  </div>
-                  <div class = "col col-box">
-                    <span class="content_font">總計：${{totalPrice}}</span>
-                  </div>
-                  <div class = "col-5 col-box">
-                    <div class="input-group input-group-lg">
-                      <span class="input-group-text" id="inputGroup-sizing-lg">現金</span>
-                      <input type="text" class="form-control content_font" v-model="cash" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-                    </div>
-                  </div>
-                  <div class = "col col-box">
-                      <span class="content_font">找零：${{giveChange}}</span>
-                  </div>
-                </div>-->
+
                 <div class = "row row-box">
                  
                   <div class = "col col-box content_font" >
@@ -165,7 +186,119 @@
                     
                 </div>
             </div>
-        </div>
+          
+
+           <div class="input-group input-group-lg remark_box">
+                <span class="input-group-text" id="inputGroup-sizing-lg">備註</span>
+                <input type="text" v-model="remark" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            </div>
+
+            <div class = "row row-box">
+              
+              <div class = "col col-box content_font" >
+                
+                <span v-html = "details"></span>
+              </div>
+              
+            </div>
+            <div class = "row row-box">
+              
+              <div class = "col col-box">
+                <span class="content_font">總計：${{totalPrice}}</span>
+              </div>
+              
+            </div>
+            <div class = "row row-box">
+              
+              
+              <div class = "col col-box">
+                <div class="input-group input-group-lg">
+                  <span class="input-group-text" id="inputGroup-sizing-lg">現金</span>
+                  <input type="text" class="form-control content_font" v-model="cash" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                </div>
+              </div>
+              
+            </div>
+            <div class = "row row-box">
+              
+              <div class = "col col-box">
+                  <span class="content_font">找零：${{giveChange}}</span>
+              </div>
+            </div>
+            
+
+            <div class = "row row-box">
+
+              <div class = "col col-box">
+                <button type="button" class="btn btn-light count_btn" @click="reset"><span class="content_font">清空</span></button>
+              </div>
+              <div class = "col col-box">
+                <button type="button" class="btn btn-light count_btn" @click="buy"><span class="content_font">送出</span></button>
+              </div>
+                
+                 -->
+            </div>
+        
+
+
+              <!-- 總計按鈕（固定在頁面底部） -->
+          <div class="fixed-bottom-bar" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+            總計 NT${{ totalPrice }}
+          </div>
+          <!-- **Modal 彈出視窗** -->
+          <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <!-- Modal 頂部 -->
+                    <div class="modal-header">
+                        <h5 class="modal-title">明 細</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- Modal 內容 -->
+                    <div class="modal-body">
+                        <p><strong>購買明細</strong></p>
+                        <p>【新品套組】 x 2</p>
+
+                        <!-- 分隔線 -->
+                        <div class="divider"></div>
+
+                        <p class="total-text">總計 NT${{totalPrice}}</p>
+
+                        <!-- 折扣 -->
+                        <div class="mb-3">
+                            <label for="discountInput" class="form-label">折扣</label>
+                            <input type="number" class="form-control" id="discountInput" value="0">
+                        </div>
+
+                        <!-- 現金 -->
+                        <div class="mb-3">
+                            <label for="cashInput" class="form-label">現金</label>
+                            <input type="number" class="form-control" id="cashInput" v-model="cash">
+                        </div>
+
+                        <!-- 找零 -->
+                        <p class="change-text">找零 NT${{change}}</p>
+
+                        <!-- 備註 -->
+                        <div class="mb-3">
+                          <label for="cashInput" class="form-label">備註</label>
+                          <input type="text" class="form-control" id="indexInput">
+                      </div>
+                    </div>
+
+                    <!-- Modal 底部按鈕 -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">結帳完成</button>
+                    </div>
+                </div>
+
+
+              </div>
+          </div>
+         </div>  
+
+        
     </body>
 
 

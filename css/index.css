@@ -113,3 +113,216 @@ body{
 .title-font{
     font-size: 0.9rem;
 }
+
+.container-box{
+    margin-bottom: 50px;
+}
+
+/*下面是浮動視窗的*/
+
+.nav-link .navbar-brand {
+    color: #fff;
+}
+
+.category-header {
+    background-color: #62B9D6;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+    padding: 0.75rem;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-header:hover {
+    background-color: #4a98b4;
+}
+
+.collapse-icon {
+    transition: transform 0.3s ease;
+}
+
+.collapsed .collapse-icon {
+    transform: rotate(180deg);
+}
+
+.fixed-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #62B9D6;
+    border-radius: 20px 20px 0 0;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1050; /* 確保不會被其他元素蓋住 */
+    transition: background 0.3s;
+}
+
+.fixed-bottom-bar:hover {
+    background-color: #4a98b4;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.product-item {
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+  }
+  .product-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  .product-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .ms-3 {
+    text-align: right;
+    width: 252px;
+    font-weight: bold;
+  }
+  
+  .stock{
+    text-align: right;
+    width: 100px;
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+  }
+  .total-text{
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+  }
+  .change-text{
+    color: rgb(119, 0, 255);
+    font-weight: bold;
+  }
+
+  .table-container {
+    margin: 20px;
+  }
+  .product-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+  /* Loading 畫面樣式 */
+  #loading-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+/* 隱藏時透明度為 0 */
+#loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none; /* 防止點擊 */
+}
+
+/* 旋轉動畫 */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+td{
+    font-size: 14px;
+}
+
+.total-sales-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: right;
+    margin-top: 20px;
+}
+.total-sales-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343a40;
+}
+.total-sales-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.auth-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.btn-custom {
+    background:  #3e8299;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+.btn-custom:hover {
+    background: #1c3b46;
+    color: white;
+    transform: scale(1.05);
+}
+.btn-secondary-custom {
+    background: #ffa500;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+.btn-secondary-custom:hover {
+    background: #c47f00;
+    color: white;
+    transform: scale(1.05);
+}
+.form-label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+}
